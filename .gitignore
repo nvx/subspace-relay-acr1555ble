@@ -1,0 +1,10 @@
+.idea
+*.iml
+*.exe
+*.zip
+*.sh
+go.work
+go.work.sum
+subspace-relay-acr1555ble
+output
+build
