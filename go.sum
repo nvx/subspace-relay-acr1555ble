@@ -22,8 +22,10 @@ github.com/gorilla/websocket v1.5.3/go.mod h1:YR8l580nyteQvAITg2hZ9XVh4b55+EU/ad
 github.com/konsorten/go-windows-terminal-sequences v1.0.1/go.mod h1:T0+1ngSBFLxvqU3pZ+m/2kptfBszLMUkC4ZK/EgS/cQ=
 github.com/nvx/go-acr1555ble v0.0.0-20250914063037-237ba0ea4646 h1:mkuP62syPhZxZbiHyL7b2QDxGRYrIOPsEEbhpC4K5Sw=
 github.com/nvx/go-acr1555ble v0.0.0-20250914063037-237ba0ea4646/go.mod h1:2yoRARoZHwu/652Y0UpgGFkml1Qopy1YNbnXViG6/wE=
-github.com/nvx/go-subspace-relay v0.0.2 h1:PjApV/oC6g/X5dBcj5GWO6hW6WCeXXv26pjAe9ojQGI=
-github.com/nvx/go-subspace-relay v0.0.2/go.mod h1:iMoV93DbKdr6RTht4CKD2s5c3+G5HvnhrVCbgG+tMgY=
+github.com/nvx/go-acr1555ble v0.0.0-20250915152825-8dd3c555833b h1:CnI+Ao6WIAfyz1mvf7L60HDL1i6fJuX7KjYleBcz8g0=
+github.com/nvx/go-acr1555ble v0.0.0-20250915152825-8dd3c555833b/go.mod h1:tpkvZYjePDvu6sNkIx/Jn5rf89vvCBPvpCLjWhiS7nM=
+github.com/nvx/go-subspace-relay v0.0.3 h1:q4hPFhi3vwaZvDVtXWWvAt2spNXmGa4cx0+vZriJg1c=
+github.com/nvx/go-subspace-relay v0.0.3/go.mod h1:2mG2ftQ4WpaEWQiGwGZMVtxXH7U5NMcfLhTYdza4Wp0=
 github.com/nvx/subspace-relay v0.0.3 h1:QvCLvak93+2UXao+IfT2xy4WrhyMXeiqvzPPRJKHimA=
 github.com/nvx/subspace-relay v0.0.3/go.mod h1:2yxY7Oi7SgwHTA9XT3eeqcAkh1na3NXU8zgj4qAoMGs=
 github.com/pkg/errors v0.9.1 h1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=
