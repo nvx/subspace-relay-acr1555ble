@@ -26,8 +26,12 @@ github.com/nvx/go-acr1555ble v0.0.0-20250915152825-8dd3c555833b h1:CnI+Ao6WIAfyz
 github.com/nvx/go-acr1555ble v0.0.0-20250915152825-8dd3c555833b/go.mod h1:tpkvZYjePDvu6sNkIx/Jn5rf89vvCBPvpCLjWhiS7nM=
 github.com/nvx/go-subspace-relay v0.0.3 h1:q4hPFhi3vwaZvDVtXWWvAt2spNXmGa4cx0+vZriJg1c=
 github.com/nvx/go-subspace-relay v0.0.3/go.mod h1:2mG2ftQ4WpaEWQiGwGZMVtxXH7U5NMcfLhTYdza4Wp0=
+github.com/nvx/go-subspace-relay v0.0.4 h1:fbWa0nwRlMan0cB6PoWC48EhzJlxsNOiEgeikUVfJcM=
+github.com/nvx/go-subspace-relay v0.0.4/go.mod h1:si43CbY76yAzlBlYaq58431V415X0PuY/miRut+Khz4=
 github.com/nvx/subspace-relay v0.0.3 h1:QvCLvak93+2UXao+IfT2xy4WrhyMXeiqvzPPRJKHimA=
 github.com/nvx/subspace-relay v0.0.3/go.mod h1:2yxY7Oi7SgwHTA9XT3eeqcAkh1na3NXU8zgj4qAoMGs=
+github.com/nvx/subspace-relay v0.0.5 h1:cRSe4OA1+eo7rDhXOiq4DdswEsAbwSuqEnbWK5PUFK8=
+github.com/nvx/subspace-relay v0.0.5/go.mod h1:2yxY7Oi7SgwHTA9XT3eeqcAkh1na3NXU8zgj4qAoMGs=
 github.com/pkg/errors v0.9.1 h1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=
 github.com/pkg/errors v0.9.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=

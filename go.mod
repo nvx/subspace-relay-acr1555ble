@@ -5,8 +5,8 @@ go 1.25.0
 require (
 	github.com/eclipse/paho.golang v0.23.0
 	github.com/nvx/go-acr1555ble v0.0.0-20250915152825-8dd3c555833b
-	github.com/nvx/go-subspace-relay v0.0.3
-	github.com/nvx/subspace-relay v0.0.3
+	github.com/nvx/go-subspace-relay v0.0.4
+	github.com/nvx/subspace-relay v0.0.5
 	tinygo.org/x/bluetooth v0.13.0
 )
 
