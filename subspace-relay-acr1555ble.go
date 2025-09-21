@@ -7,7 +7,9 @@ import (
 	"flag"
 	"github.com/eclipse/paho.golang/paho"
 	"github.com/nvx/go-acr1555ble"
+	"github.com/nvx/go-rfid"
 	"github.com/nvx/go-subspace-relay"
+	"github.com/nvx/go-subspace-relay-logger"
 	subspacerelaypb "github.com/nvx/subspace-relay"
 	"log/slog"
 	"os"
@@ -30,7 +32,7 @@ func main() {
 	)
 	flag.Parse()
 
-	subspacerelay.InitLogger("subspace-relay-acr1555ble")
+	srlog.InitLogger("subspace-relay-acr1555ble")
 
 	brokerURL := subspacerelay.NotZero(*brokerFlag, os.Getenv("BROKER_URL"), defaultBrokerURL)
 	if brokerURL == "" {
@@ -42,26 +44,26 @@ func main() {
 	adapter := bluetooth.DefaultAdapter
 	err := adapter.Enable()
 	if err != nil {
-		slog.ErrorContext(ctx, "Error connecting to bluetooth adapter", subspacerelay.ErrorAttrs(err))
+		slog.ErrorContext(ctx, "Error connecting to bluetooth adapter", rfid.ErrorAttrs(err))
 		os.Exit(1)
 	}
 
 	res, err := scan(ctx, adapter, *name)
 	if err != nil {
-		slog.ErrorContext(ctx, "Error scanning", subspacerelay.ErrorAttrs(err))
+		slog.ErrorContext(ctx, "Error scanning", rfid.ErrorAttrs(err))
 		os.Exit(1)
 	}
 
 	card, closer, err := connectCard(ctx, adapter, res.Address, *sam)
 	if err != nil {
-		slog.ErrorContext(ctx, "Error connecting to PCSC card", subspacerelay.ErrorAttrs(err))
+		slog.ErrorContext(ctx, "Error connecting to PCSC card", rfid.ErrorAttrs(err))
 		os.Exit(1)
 	}
 	defer closer()
 
 	atr, err := card.ATR()
 	if err != nil {
-		slog.ErrorContext(ctx, "Error getting card ATR", subspacerelay.ErrorAttrs(err))
+		slog.ErrorContext(ctx, "Error getting card ATR", rfid.ErrorAttrs(err))
 		os.Exit(1)
 	}
 
@@ -83,7 +85,7 @@ func main() {
 
 	m, err := subspacerelay.New(ctx, brokerURL, "")
 	if err != nil {
-		slog.ErrorContext(ctx, "Error connecting to server", subspacerelay.ErrorAttrs(err))
+		slog.ErrorContext(ctx, "Error connecting to server", rfid.ErrorAttrs(err))
 		os.Exit(1)
 	}
 
@@ -98,7 +100,7 @@ func main() {
 	<-interruptChannel
 	err = m.Close()
 	if err != nil {
-		slog.ErrorContext(ctx, "Error closing relay", subspacerelay.ErrorAttrs(err))
+		slog.ErrorContext(ctx, "Error closing relay", rfid.ErrorAttrs(err))
 	}
 }
 
@@ -110,7 +112,7 @@ type handler struct {
 func (h *handler) HandleMQTT(ctx context.Context, r *subspacerelay.SubspaceRelay, p *paho.Publish) bool {
 	req, err := r.Parse(ctx, p)
 	if err != nil {
-		slog.ErrorContext(ctx, "Error parsing request message", subspacerelay.ErrorAttrs(err))
+		slog.ErrorContext(ctx, "Error parsing request message", rfid.ErrorAttrs(err))
 		return false
 	}
 
@@ -125,14 +127,14 @@ func (h *handler) HandleMQTT(ctx context.Context, r *subspacerelay.SubspaceRelay
 		err = errors.New("unsupported message")
 	}
 	if err != nil {
-		slog.ErrorContext(ctx, "Error handling request", subspacerelay.ErrorAttrs(err))
+		slog.ErrorContext(ctx, "Error handling request", rfid.ErrorAttrs(err))
 		return false
 	}
 	return true
 }
 
 func (h *handler) handlePayload(ctx context.Context, payload *subspacerelaypb.Payload) (_ []byte, err error) {
-	defer subspacerelay.DeferWrap(&err)
+	defer rfid.DeferWrap(ctx, &err)
 
 	if payload.PayloadType == subspacerelaypb.PayloadType_PAYLOAD_TYPE_PCSC_READER_CONTROL {
 		if payload.Control == nil || *payload.Control > 0xFFFF {
@@ -146,7 +148,7 @@ func (h *handler) handlePayload(ctx context.Context, payload *subspacerelaypb.Pa
 }
 
 func connectCard(ctx context.Context, adapter *bluetooth.Adapter, address bluetooth.Address, sam bool) (_ *acr1555ble.Card, _ func(), err error) {
-	defer subspacerelay.DeferWrap(&err)
+	defer rfid.DeferWrap(ctx, &err)
 
 	reader, err := acr1555ble.New(ctx, adapter, address)
 	if err != nil {
@@ -167,11 +169,11 @@ func connectCard(ctx context.Context, adapter *bluetooth.Adapter, address blueto
 	closer := func() {
 		err := card.Close()
 		if err != nil {
-			slog.ErrorContext(ctx, "Error disconnecting from card", subspacerelay.ErrorAttrs(err))
+			slog.ErrorContext(ctx, "Error disconnecting from card", rfid.ErrorAttrs(err))
 		}
 		err = reader.Close()
 		if err != nil {
-			slog.ErrorContext(ctx, "Error disconnecting from reader", subspacerelay.ErrorAttrs(err))
+			slog.ErrorContext(ctx, "Error disconnecting from reader", rfid.ErrorAttrs(err))
 		}
 	}
 

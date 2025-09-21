@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	subspacerelay "github.com/nvx/go-subspace-relay"
+	"github.com/nvx/go-rfid"
 	"log/slog"
 	"regexp"
 	"strings"
@@ -12,7 +12,7 @@ import (
 var validMAC = regexp.MustCompile(`^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$`)
 
 func scan(ctx context.Context, adapter *bluetooth.Adapter, device string) (_ bluetooth.ScanResult, err error) {
-	defer subspacerelay.DeferWrap(&err)
+	defer rfid.DeferWrap(ctx, &err)
 
 	ch := make(chan bluetooth.ScanResult, 1)
 	writeRes := func(res bluetooth.ScanResult) {

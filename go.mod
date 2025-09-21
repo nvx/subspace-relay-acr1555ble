@@ -4,15 +4,18 @@ go 1.25.0
 
 require (
 	github.com/eclipse/paho.golang v0.23.0
-	github.com/nvx/go-acr1555ble v0.0.0-20250915152825-8dd3c555833b
-	github.com/nvx/go-subspace-relay v0.0.4
-	github.com/nvx/subspace-relay v0.0.5
+	github.com/nvx/go-acr1555ble v0.0.1
+	github.com/nvx/go-rfid v0.0.1
+	github.com/nvx/go-subspace-relay v0.0.5
+	github.com/nvx/go-subspace-relay-logger v0.0.1
+	github.com/nvx/subspace-relay v0.0.7
 	tinygo.org/x/bluetooth v0.13.0
 )
 
 require (
 	github.com/Code-Hex/dd v1.1.0 // indirect
 	github.com/ansel1/merry/v2 v2.2.2 // indirect
+	github.com/bobg/go-generics/v4 v4.2.0 // indirect
 	github.com/go-ole/go-ole v1.3.0 // indirect
 	github.com/godbus/dbus/v5 v5.1.0 // indirect
 	github.com/google/uuid v1.6.0 // indirect
