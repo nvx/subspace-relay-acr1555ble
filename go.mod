@@ -5,10 +5,10 @@ go 1.25.0
 require (
 	github.com/eclipse/paho.golang v0.23.0
 	github.com/nvx/go-acr1555ble v0.0.1
-	github.com/nvx/go-rfid v0.0.1
-	github.com/nvx/go-subspace-relay v0.0.5
+	github.com/nvx/go-rfid v0.0.2
+	github.com/nvx/go-subspace-relay v0.0.7
 	github.com/nvx/go-subspace-relay-logger v0.0.1
-	github.com/nvx/subspace-relay v0.0.7
+	github.com/nvx/subspace-relay v0.0.9
 	tinygo.org/x/bluetooth v0.13.0
 )
 
@@ -20,6 +20,7 @@ require (
 	github.com/godbus/dbus/v5 v5.1.0 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/gorilla/websocket v1.5.3 // indirect
+	github.com/nvx/go-apdu v1.0.1 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/saltosystems/winrt-go v0.0.0-20241223121953-98e32661f6ff // indirect
 	github.com/sirupsen/logrus v1.9.3 // indirect
@@ -33,6 +34,7 @@ require (
 	go.uber.org/zap/exp v0.3.0 // indirect
 	golang.org/x/exp v0.0.0-20250911091902-df9299821621 // indirect
 	golang.org/x/net v0.44.0 // indirect
+	golang.org/x/sync v0.17.0 // indirect
 	golang.org/x/sys v0.36.0 // indirect
 	google.golang.org/protobuf v1.36.9 // indirect
 )
